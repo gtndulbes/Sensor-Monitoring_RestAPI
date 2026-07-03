@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitoring Sensor - Dashboard</title>
+    
+    <!-- Google Fonts untuk tipografi modern -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome untuk ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Container Utama -->
+    <div class="dashboard-container">
+        
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <i class="fas fa-microchip header-icon"></i>
+                <div>
+                    <h1 class="header-title">Monitoring Sensor</h1>
+                    <p class="header-subtitle">Real-Time Data Monitoring</p>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="server-status" id="serverStatus">
+                    <span class="status-dot offline"></span>
+                    <span class="status-text">Server Offline</span>
+                </div>
+                <div class="last-update" id="lastUpdate">
+                    <i class="far fa-clock"></i>
+                    <span>--</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Konten Utama -->
+        <main class="main-content">
+            
+            <!-- Ringkasan -->
+            <div class="summary-bar">
+                <div class="summary-item">
+                    <i class="fas fa-thermometer-half"></i>
+                    <span>Total Sensor: <strong>3</strong></span>
+                </div>
+                <div class="summary-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Aktif: <strong>3</strong></span>
+                </div>
+                <div class="summary-item">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span>Alert: <strong>0</strong></span>
+                </div>
+            </div>
+
+            <!-- Grid Card Sensor -->
+            <div class="sensor-grid">
+                
+                <!-- Card Sensor Suhu -->
+                <div class="sensor-card" data-sensor="suhu">
+                    <div class="card-header">
+                        <div class="sensor-icon">
+                            <i class="fas fa-thermometer-half"></i>
+                        </div>
+                        <div class="sensor-info">
+                            <h3 class="sensor-name">Suhu</h3>
+                            <span class="sensor-unit">Celcius</span>
+                        </div>
+                        <span class="badge badge-normal">Normal</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="sensor-value">
+                            <span class="value-number" id="valueSuhu">--</span>
+                            <span class="value-unit">°C</span>
+                        </div>
+                        <div class="sensor-details">
+                            <div class="detail-item">
+                                <i class="fas fa-chart-line"></i>
+                                <span>Range: 20°C - 35°C</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="far fa-clock"></i>
+                                <span>Update: <span id="timeSuhu">--</span></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 60%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card Sensor Kelembapan -->
+                <div class="sensor-card" data-sensor="kelembapan">
+                    <div class="card-header">
+                        <div class="sensor-icon">
+                            <i class="fas fa-tint"></i>
+                        </div>
+                        <div class="sensor-info">
+                            <h3 class="sensor-name">Kelembapan</h3>
+                            <span class="sensor-unit">Relatif</span>
+                        </div>
+                        <span class="badge badge-normal">Normal</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="sensor-value">
+                            <span class="value-number" id="valueKelembapan">--</span>
+                            <span class="value-unit">%</span>
+                        </div>
+                        <div class="sensor-details">
+                            <div class="detail-item">
+                                <i class="fas fa-chart-line"></i>
+                                <span>Range: 30% - 90%</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="far fa-clock"></i>
+                                <span>Update: <span id="timeKelembapan">--</span></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 75%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card Sensor Tekanan -->
+                <div class="sensor-card" data-sensor="tekanan">
+                    <div class="card-header">
+                        <div class="sensor-icon">
+                            <i class="fas fa-compress-arrows-alt"></i>
+                        </div>
+                        <div class="sensor-info">
+                            <h3 class="sensor-name">Tekanan</h3>
+                            <span class="sensor-unit">Udara</span>
+                        </div>
+                        <span class="badge badge-normal">Normal</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="sensor-value">
+                            <span class="value-number" id="valueTekanan">--</span>
+                            <span class="value-unit">hPa</span>
+                        </div>
+                        <div class="sensor-details">
+                            <div class="detail-item">
+                                <i class="fas fa-chart-line"></i>
+                                <span>Range: 980 - 1050 hPa</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="far fa-clock"></i>
+                                <span>Update: <span id="timeTekanan">--</span></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 55%"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Loading Overlay -->
+            <div class="loading-overlay" id="loadingOverlay">
+                <div class="spinner"></div>
+                <p>Memuat data sensor...</p>
+            </div>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2024 Sensor Monitoring System | Praktikum REST API</p>
+        </footer>
+
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
